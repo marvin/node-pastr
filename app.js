@@ -7,6 +7,7 @@ var express = require('express')
   , routes = require('./routes')
   , mongo = require('mongoose')
   , http = require('http')
+  , hl = require("highlight").Highlight
   , path = require('path');
 
 var app = express();
@@ -46,7 +47,10 @@ var PostsSchema = mongo.Schema({
 }),
   Post = mongo.model('posts', PostsSchema);
 
-app.get('/', routes.index);
+//app.get('/', routes.index);
+app.get('/', function(req, res) {
+  res.redirect('/all');
+})
 
 // user index
 app.get('/users', function(req, res) {
@@ -79,6 +83,14 @@ app.param('name', function(req, res, next, name) {
   });
 });
 
+app.param('pastrid', function(req, res, next, pastrid) {
+  Post.find({ _id: pastrid}, function(err, docs) {
+    if (err) console.log("ERROR:" + err);
+    req.pastr = docs[0];
+    next();
+  });
+});
+
 // user show
 app.get('/users/:name', function(req, res) {
   res.render('users/show', { user: req.user, title: "Userpage" });
@@ -107,6 +119,14 @@ app.post('/new', function(req, res) {
     if (err) res.json(err);
     res.redirect('/show/' + docs._id);
   });
+});
+
+// show pastr
+app.get('/show/:pastrid', function(req, res) {
+  d = req.pastr;
+  data_hl = hl(d.data);
+
+  res.render('show', { pastr_title: d.title, pastr_data: data_hl, pastr_lang: d.lang, title: "Show Pastr" });
 });
 
 http.createServer(app).listen(app.get('port'), function(){
