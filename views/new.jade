@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  form(method="POST", action="/new")
+    div
+      p Title:
+        input#title(type="text", name="title", size="100")
+      p Lang:
+        select(name="lang")
+          option(value="js") Javascript
+          option(value="python") Python
+          option(value="php") PHP
+
+    textarea#data(name="data", cols="100", rows="20")
+    p: button(type="submit") Create

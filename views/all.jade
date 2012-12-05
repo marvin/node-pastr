@@ -1,0 +1,6 @@
+extends layout
+
+block content
+  h1= title
+  each doc in docs
+    li: a(href="/show/#{doc._id}") #{doc.title}

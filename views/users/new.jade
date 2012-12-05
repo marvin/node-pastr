@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+  h1= title
+  form(method="POST", action="/users")
+    p Name:
+      input#name(type="text", name="name")
+    p Email:
+        input#email(type="text", name="email")
+    p: button(type="submit") Create
