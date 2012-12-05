@@ -1,8 +1,37 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px Arial, sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
 a {
   color: #00B7FF;
+}
+
+.content {
+    padding: 50px;
+}
+
+.head {
+    border-bottom: 1px solid #DDD;
+    width: 100%;
+    background-color: #EFEFEF;
+    box-shadow: 1px 1px 5px #999;
+    height: 45px;
+}
+
+.head ul {
+    float: right;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.head ul li {
+    display: inline;
+    color: #4183C4;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0 10px;
 }

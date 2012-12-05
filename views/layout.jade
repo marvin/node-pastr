@@ -2,7 +2,17 @@ doctype 5
 html
   head
     title= title
+    link(rel='stylesheet', href='/stylesheets/normalize.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/github.css')
   body
-    block content
+    div.head
+        ul
+            li: a(href="/new") New Pastr
+            li |
+            li: a(href="/all") All Pastr
+            li |
+            li: a(href="/users") Users
+
+    div.content
+        block content
