@@ -12,6 +12,10 @@ a {
     padding-left: 30px;
 }
 
+.content pre {
+    width: 90%;
+}
+
 .head {
     border-bottom: 1px solid #DDD;
     width: 100%;

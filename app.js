@@ -111,10 +111,12 @@ app.get('/all', function(req, res) {
 // pastr create
 app.post('/new', function(req, res) {
   r = req.body;
+  d = r.data;
+  d_r = d.replace(/(\t)/gm,"");
   new Post({
     title: r.title,
     lang: r.lang,
-    data: r.data
+    data: d_r
   }).save(function(err, docs) {
     if (err) res.json(err);
     res.redirect('/show/' + docs._id);
