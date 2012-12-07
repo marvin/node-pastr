@@ -12,7 +12,7 @@ var express = require('express')
 
 var app = express();
 
-var dburl = "mongodb://mia/pastr";
+var dburl = "mongodb://localhost/pastr";
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -22,7 +22,7 @@ app.configure(function(){
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(express.cookieParser('NCXpUQPG1Ba6iN8jpQOdr8cejgZ5d30C'));
+  app.use(express.cookieParser('your-cookie-key'));
   app.use(express.session());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
